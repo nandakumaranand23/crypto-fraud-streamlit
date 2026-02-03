@@ -66,4 +66,6 @@ Project Objective:
 Author:
   Nanda Kumar A
   BCA (AI & Data Science) | Data Analyst
-  GitHub: https://github.com/nandakumaranand23
+  Live App: https://crypto-fraud-app.streamlit.app/  
+  GitHub Repo: https://github.com/nandakumaranand23/crypto-fraud-streamlit  
+
