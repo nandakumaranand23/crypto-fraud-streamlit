@@ -131,6 +131,13 @@ amount = st.number_input("Amount", min_value=0.0)
 # SEND BUTTON
 # -----------------------------
 if st.button("SEND"):
+
+        # RESET OTP STATE
+    st.session_state.otp_pending = False
+    st.session_state.otp_code = None
+    st.session_state.otp_amount = 0
+    st.session_state.otp_to = None
+
     if not to_addr:
         st.warning("Enter destination address")
     elif amount <= 0:
