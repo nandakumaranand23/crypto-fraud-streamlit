@@ -51,17 +51,22 @@ def run_fraud_model(amount):
 # RULE ENGINE
 # -----------------------------
 def run_rule_engine(amount, balance, to_addr):
+    import pytz
+    from datetime import datetime
+
     rule_risk = 0
     reasons = []
 
-    # Rule 1: Late night
-    hour = datetime.now().hour
+    # Rule 1: Late night (IST timezone)
+    ist = pytz.timezone("Asia/Kolkata")
+    hour = datetime.now(ist).hour
+
     if hour < 6 or hour >= 22:
         rule_risk += 0.15
         reasons.append("Late night transaction (+15%)")
 
     # Rule 2: Wallet drain %
-    drain_ratio = amount / balance
+    drain_ratio = amount / balance if balance > 0 else 0
     if drain_ratio > 0.8:
         rule_risk += 0.30
         reasons.append("Wallet drain > 80% (+30%)")
